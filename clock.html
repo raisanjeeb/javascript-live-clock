@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        #clock {
+            font-size: 2rem;
+            font-family: monospace;
+            text-align: center;
+            margin-top: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+
+    <script type="text/javascript">
+        function updateClock() {
+            let date = new Date();
+
+            
+            let year = date.getFullYear(),
+                month = date.getMonth(), // 0-based
+                mDay = date.getDate(),
+                day = date.getDay(),
+                hour = date.getHours(),
+                minute = date.getMinutes(),
+                second = date.getSeconds();
+
+           
+            let monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            let dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+            
+            if (hour < 10) hour = "0" + hour;
+            if (minute < 10) minute = "0" + minute;
+            if (second < 10) second = "0" + second;
+
+            let clock = `Today: ${dayArr[day]}, ${mDay} ${monthArr[month]} ${year} - ${hour}:${minute}:${second}`;
+
+            document.getElementById("clock").innerText = clock;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
